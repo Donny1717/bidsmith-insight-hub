@@ -53,6 +53,8 @@ function Index() {
   const [submitted, setSubmitted] = useState(false);
   const current = showcase[active];
 
+  if (!current) return null;
+
   function submitDemo(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setSubmitted(true);
