@@ -65,8 +65,8 @@
   --color-brand-red: var(--brand-red);
   --color-brand-ice: var(--brand-ice);
   --color-brand-gold: var(--brand-gold);
-  --font-sans: "Source Sans 3", sans-serif;
-  --font-display: "Oswald", sans-serif;
+  --font-sans: "Manrope", sans-serif;
+  --font-display: "Sora", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
 }
 
