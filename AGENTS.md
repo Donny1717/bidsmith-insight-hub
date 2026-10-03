@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Shared site branding and footer live in `src/components/site-brand.tsx` so all public routes remain visually consistent.

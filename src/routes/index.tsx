@@ -1,8 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
   Check,
-  ChevronDown,
   CircleCheck,
   FileCheck2,
   Fingerprint,
@@ -17,6 +16,7 @@ import { useEffect, useState, type FormEvent } from "react";
 
 import controlRoom from "@/assets/bidsmith-control-room.jpg";
 import { Button } from "@/components/ui/button";
+import { SiteBrand, SiteFooter } from "@/components/site-brand";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -83,20 +83,18 @@ function Index() {
       </div>
       <header className="relative z-50 border-b border-border bg-background/95 backdrop-blur">
         <div className="mx-auto flex h-16 lg:h-20 max-w-7xl items-center px-5 lg:px-8">
-          <a href="#top" className="flex items-center gap-3" aria-label="BidSmith ASF home">
-            <span className="grid size-10 place-items-center bg-brand-red font-display text-base font-bold text-primary-foreground">BS</span>
-            <span><strong className="block font-display text-xl font-semibold leading-none">BidSmith ASF</strong><span className="mt-1 block text-[10px] font-semibold uppercase text-muted-foreground">Assured Systems Framework</span></span>
-          </a>
+          <SiteBrand compact />
           <nav className="ml-auto hidden items-center gap-7 text-sm font-semibold lg:flex" aria-label="Primary navigation">
             <a className="hover:text-primary" href="#platform">Platform</a>
             <a className="hover:text-primary" href="#architecture">Architecture</a>
             <a className="hover:text-primary" href="#governance">Governance</a>
             <a className="hover:text-primary" href="#comparison">Why BidSmith</a>
+            <Link className="hover:text-primary" to="/gateway">Gateway</Link>
           </nav>
           <Button asChild className="ml-8 hidden lg:inline-flex"><a href="#demo">Request enterprise demo <ArrowRight size={16} /></a></Button>
           <Button variant="outline" className="ml-auto size-11 px-0 lg:hidden" aria-label="Toggle menu" onClick={() => setMenuOpen((value) => !value)}>{menuOpen ? <X size={20} /> : <Menu size={20} />}</Button>
         </div>
-        {menuOpen && <nav className="border-t border-border bg-background px-5 py-5 lg:hidden"><div className="flex flex-col gap-4 text-sm font-semibold">{[["Platform", "#platform"], ["Architecture", "#architecture"], ["Governance", "#governance"], ["Why BidSmith", "#comparison"], ["Request demo", "#demo"]].map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}</div></nav>}
+        {menuOpen && <nav className="border-t border-border bg-background px-5 py-5 lg:hidden"><div className="flex flex-col gap-4 text-sm font-semibold">{[["Platform", "#platform"], ["Architecture", "#architecture"], ["Governance", "#governance"], ["Why BidSmith", "#comparison"], ["Request demo", "#demo"]].map(([label, href]) => <a key={href} href={href} onClick={() => setMenuOpen(false)}>{label}</a>)}<Link to="/gateway" onClick={() => setMenuOpen(false)}>BidSmith Gateway</Link></div></nav>}
       </header>
 
       <main id="top">
@@ -129,7 +127,7 @@ function Index() {
         <section id="demo" className="bg-brand-navy py-20 text-primary-foreground lg:py-28"><div className="mx-auto grid max-w-7xl gap-12 px-5 lg:grid-cols-[0.85fr_1.15fr] lg:px-8"><div><span data-reveal className="text-xs font-bold uppercase text-brand-teal">Enterprise demonstration</span><h2 data-reveal data-reveal-delay="1" className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight">See an evidence-first tender workflow in practice.</h2><p className="mt-5 text-lg leading-8 text-primary-foreground/70">Walk through requirement mapping, evidence controls, claim review and the final assurance bundle with your procurement, bid and risk teams.</p><div className="mt-8 border-t border-primary-foreground/20 pt-6 text-sm text-primary-foreground/70"><p className="font-semibold text-primary-foreground">Suitable for</p><p className="mt-2">Public-sector suppliers · regulated enterprises · bid assurance teams · procurement leaders</p></div></div><div data-reveal className="bg-background p-6 text-foreground sm:p-9">{submitted ? <div className="flex min-h-[420px] flex-col items-center justify-center text-center"><CircleCheck size={48} className="text-brand-teal"/><h3 className="mt-5 text-2xl font-semibold">Your request is ready for review.</h3><p className="mt-3 max-w-md text-muted-foreground">Thank you. This demonstration form is currently a preview and has not sent your details.</p><Button className="mt-7" onClick={() => setSubmitted(false)}>Submit another request</Button></div> : <form onSubmit={submitDemo}><div className="grid gap-5 sm:grid-cols-2"><label className="text-sm font-semibold">Full name<input required className="mt-2 h-12 w-full border border-input bg-background px-3 font-normal outline-none focus:border-primary" placeholder="Your name" /></label><label className="text-sm font-semibold">Work email<input required type="email" className="mt-2 h-12 w-full border border-input bg-background px-3 font-normal outline-none focus:border-primary" placeholder="name@organisation.gov.uk" /></label><label className="text-sm font-semibold">Organisation<input required className="mt-2 h-12 w-full border border-input bg-background px-3 font-normal outline-none focus:border-primary" placeholder="Organisation name" /></label><label className="text-sm font-semibold">Your role<select className="mt-2 h-12 w-full border border-input bg-background px-3 font-normal outline-none focus:border-primary"><option>Procurement leader</option><option>Bid director</option><option>Risk or assurance lead</option><option>Technology leader</option></select></label></div><label className="mt-5 block text-sm font-semibold">What would you like to evaluate?<textarea className="mt-2 min-h-28 w-full border border-input bg-background p-3 font-normal outline-none focus:border-primary" placeholder="Tell us about your tender environment and assurance priorities." /></label><label className="mt-5 flex items-start gap-3 text-xs leading-5 text-muted-foreground"><input required type="checkbox" className="mt-1 accent-primary"/>I agree to be contacted about an enterprise demonstration.</label><Button type="submit" className="mt-6 w-full sm:w-auto">Request enterprise demo <ArrowRight size={16}/></Button><p className="mt-4 text-xs text-muted-foreground">No details are sent from this preview form.</p></form>}</div></div></section>
       </main>
 
-      <footer className="bg-brand-navy-soft text-primary-foreground"><div className="mx-auto flex max-w-7xl flex-col gap-6 px-5 py-10 sm:flex-row sm:items-center sm:justify-between lg:px-8"><div className="flex items-center gap-3"><span className="grid size-9 place-items-center bg-brand-red text-xs font-bold">BS</span><div><strong>BidSmith ASF</strong><p className="text-xs text-primary-foreground/60">Evidence-first procurement intelligence</p></div></div><p className="max-w-xl text-xs leading-5 text-primary-foreground/60">BidSmith is presented as a controlled product programme. Compliance and assurance claims remain subject to implementation, verification and the applicable procurement context.</p><a href="#top" className="flex items-center gap-2 text-sm font-semibold">Back to top <ChevronDown className="rotate-180" size={16}/></a></div></footer>
+      <SiteFooter />
     </div>
   );
 }
