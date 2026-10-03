@@ -82,7 +82,7 @@ function Index() {
         Built for controlled public procurement · AI may propose, but never approve or submit
       </div>
       <header className="relative z-50 border-b border-border bg-background/95 backdrop-blur">
-        <div className="mx-auto flex h-16 lg:h-20 max-w-7xl items-center px-5 lg:px-8">
+        <div className="mx-auto flex h-20 lg:h-24 max-w-7xl items-center px-5 lg:px-8">
           <SiteBrand compact />
           <nav className="ml-auto hidden items-center gap-7 text-sm font-semibold lg:flex" aria-label="Primary navigation">
             <a className="hover:text-primary" href="#platform">Platform</a>

@@ -9,7 +9,7 @@ export function SiteBrand({ compact = false }: { compact?: boolean }) {
       <img
         src={logoAsset.url}
         alt="BidSmith ASF"
-        className={compact ? "h-12 w-auto" : "h-14 w-auto sm:h-16"}
+        className={compact ? "h-16 w-auto lg:h-[4.5rem]" : "h-20 w-auto sm:h-24"}
       />
     </Link>
   );

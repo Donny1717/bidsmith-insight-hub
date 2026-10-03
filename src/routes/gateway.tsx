@@ -39,7 +39,7 @@ function GatewayPage() {
     <div id="top" className="min-h-screen overflow-x-hidden bg-background text-foreground">
       <div className="bg-brand-navy px-5 py-2 text-center text-xs font-medium text-primary-foreground">Controlled access · Defined permissions · Human accountability</div>
       <header className="border-b border-border bg-background">
-        <div className="mx-auto flex h-20 max-w-7xl items-center px-5 lg:px-8">
+        <div className="mx-auto flex h-20 lg:h-24 max-w-7xl items-center px-5 lg:px-8">
           <SiteBrand compact />
           <nav className="ml-auto hidden items-center gap-7 text-sm font-semibold lg:flex" aria-label="Primary navigation">
             <Link to="/">Platform</Link>
